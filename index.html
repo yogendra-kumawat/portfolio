@@ -242,22 +242,26 @@ body { animation: flicker 0.15s infinite; }
   opacity: 0;
   transition: opacity 0.8s ease;
   min-height: 100vh;
+  position: relative;
 }
 
 #portfolio.visible { opacity: 1; }
 
+/* LOW BRIGHTNESS BACKGROUND RAIN CANVAS */
+#portfolio-rain-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 section {
   padding: 80px 60px;
   border-bottom: 1px solid rgba(0,143,17,0.3);
-}
-
-.section-title {
-  font-family: var(--font-terminal);
-  font-size: 36px;
-  color: var(--green);
-  margin-bottom: 40px;
-  text-shadow: 0 0 10px rgba(0,255,65,0.4);
-  letter-spacing: 2px;
+  background: transparent; /* Made transparent to let background rain show through */
 }
 
 #hero {
@@ -268,6 +272,7 @@ section {
   gap: 60px;
   padding: 60px;
   border-bottom: 1px solid rgba(0,143,17,0.3);
+  background: transparent;
 }
 
 .hero-label {
@@ -383,7 +388,7 @@ section {
   height: 340px;
 }
 
-#skills { background: var(--bg); }
+#skills { background: transparent; }
 
 .skills-grid {
   display: grid;
@@ -442,7 +447,7 @@ section {
   color: var(--green);
 }
 
-#projects { background: #030803; }
+#projects { background: transparent; }
 
 .project-card {
   border: 1px solid var(--green-dim);
@@ -579,7 +584,7 @@ section {
   margin-bottom: 8px;
 }
 
-#about { background: var(--bg); }
+#about { background: transparent; }
 
 .about-grid {
   display: grid;
@@ -682,7 +687,7 @@ section {
   animation: blink 1s step-end infinite;
 }
 
-#contact { background: #030803; }
+#contact { background: transparent; }
 
 .contact-grid {
   display: grid;
@@ -752,6 +757,7 @@ footer {
   color: var(--green-dim);
   border-top: 1px solid rgba(0,143,17,0.2);
   letter-spacing: 2px;
+  background: transparent;
 }
 
 .reveal {
@@ -852,7 +858,6 @@ nav {
   object-fit: cover;
   display: block;
   filter: sepia(20%) saturate(0.8) contrast(1.1) brightness(0.95);
-  /* Subtle green tint to match the terminal theme */
   mix-blend-mode: normal;
 }
 
@@ -948,6 +953,8 @@ nav {
 </div>
 
 <div id="portfolio">
+  <canvas id="portfolio-rain-canvas"></canvas>
+
   <nav>
     <a href="#hero" class="nav-brand">YK://ROOT</a>
     <div class="nav-links">
@@ -974,10 +981,6 @@ nav {
       </div>
     </div>
     <div class="hero-right">
-      <!-- ═══════════════════════════════════════════════════════════
-           PHOTO WINDOW — replace the src below with your image path
-           Example: src="your-photo.jpg"  or  src="./assets/photo.png"
-           ═══════════════════════════════════════════════════════════ -->
       <div class="photo-window">
         <div class="photo-win-title">
           <span class="photo-win-dots">
@@ -986,13 +989,11 @@ nav {
           WIN: OPERATOR//PROFILE_IMG
         </div>
         <div class="photo-win-body">
-          <!-- ▼▼▼ ADD YOUR PHOTO SRC HERE ▼▼▼ -->
           <img
-            src="photo"
+            src="YOUR_PHOTO_PATH_HERE.jpg"
             alt="Yogendra Kumawat"
             class="profile-photo"
           />
-          <!-- ▲▲▲ REPLACE src WITH YOUR IMAGE PATH ▲▲▲ -->
           <div class="photo-scanline"></div>
         </div>
         <div class="photo-win-footer">
@@ -1378,8 +1379,6 @@ function initChakra(containerId, rings, baseRadius) {
 }
 
 initChakra('boot-rings', 6, 15);
-// ─── Hero rings removed; photo window used instead ───
-// setTimeout(() => initChakra('hero-rings', 7, 25), 200);
 
 const bootLines = [
   { text: 'BIOS Date 06/08/26 — Ver 08.00.15', sys: false },
@@ -1457,6 +1456,64 @@ function initScrollReveal() {
   }, { threshold: 0.1 });
   elements.forEach(el => observer.observe(el));
 }
+
+// ═══════════════════════════════════════════
+// LOW BRIGHTNESS BACKGROUND RAIN LOGIC
+// ═══════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('portfolio-rain-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
+
+  window.addEventListener('resize', () => {
+    columns = Math.floor(canvas.width / fontSize);
+    drops = Array(columns).fill(1);
+  });
+
+  function drawRain() {
+    // Matches body background #020502 with low opacity to generate a trail effect
+    ctx.fillStyle = 'rgba(2, 5, 2, 0.06)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Dinned color representation using 0.08 opacity to stay subtly in the background
+    ctx.fillStyle = 'rgba(0, 255, 65, 0.08)';
+    ctx.font = `${fontSize}px monospace`;
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = ASCII_CHARS[Math.floor(Math.random() * ASCII_CHARS.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+    requestAnimationFrame(drawRain);
+  }
+
+  // Hooking visibility logic up to your boot structure to prevent CPU overhead during initialization
+  const portfolio = document.getElementById('portfolio');
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class' && portfolio.classList.contains('visible')) {
+        drawRain();
+        observer.disconnect(); 
+      }
+    });
+  });
+  observer.observe(portfolio, { attributes: true });
+})();
 </script>
 </body>
 </html>
