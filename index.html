@@ -242,26 +242,32 @@ body { animation: flicker 0.15s infinite; }
   opacity: 0;
   transition: opacity 0.8s ease;
   min-height: 100vh;
-  position: relative;
 }
 
 #portfolio.visible { opacity: 1; }
 
-/* LOW BRIGHTNESS BACKGROUND RAIN CANVAS */
+section {
+  padding: 80px 60px;
+  border-bottom: 1px solid rgba(0,143,17,0.3);
+  background: transparent;
+}
+
+/* BACKGROUND RAIN CANVAS */
 #portfolio-rain-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   z-index: -1;
   pointer-events: none;
 }
 
-section {
-  padding: 80px 60px;
-  border-bottom: 1px solid rgba(0,143,17,0.3);
-  background: transparent; /* Made transparent to let background rain show through */
+.section-title {
+  font-family: var(--font-terminal);
+  font-size: 36px;
+  color: var(--green);
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px rgba(0,255,65,0.4);
+  letter-spacing: 2px;
 }
 
 #hero {
@@ -272,7 +278,6 @@ section {
   gap: 60px;
   padding: 60px;
   border-bottom: 1px solid rgba(0,143,17,0.3);
-  background: transparent;
 }
 
 .hero-label {
@@ -388,7 +393,7 @@ section {
   height: 340px;
 }
 
-#skills { background: transparent; }
+#skills { background: var(--bg); }
 
 .skills-grid {
   display: grid;
@@ -447,7 +452,7 @@ section {
   color: var(--green);
 }
 
-#projects { background: transparent; }
+#projects { background: #030803; }
 
 .project-card {
   border: 1px solid var(--green-dim);
@@ -480,13 +485,22 @@ section {
   border: 1px solid;
 }
 
+/* GREEN — done and functional */
 .status-complete {
   color: var(--green);
   border-color: var(--green);
   background: rgba(0,255,65,0.06);
 }
 
+/* CYAN — working / live */
 .status-active {
+  color: #00e5ff;
+  border-color: #00e5ff;
+  background: rgba(0,229,255,0.06);
+}
+
+/* ORANGE — in progress, not functional yet */
+.status-ongoing {
   color: var(--orange);
   border-color: var(--orange);
   background: rgba(255,107,53,0.06);
@@ -584,7 +598,7 @@ section {
   margin-bottom: 8px;
 }
 
-#about { background: transparent; }
+#about { background: var(--bg); }
 
 .about-grid {
   display: grid;
@@ -687,7 +701,7 @@ section {
   animation: blink 1s step-end infinite;
 }
 
-#contact { background: transparent; }
+#contact { background: #030803; }
 
 .contact-grid {
   display: grid;
@@ -757,7 +771,6 @@ footer {
   color: var(--green-dim);
   border-top: 1px solid rgba(0,143,17,0.2);
   letter-spacing: 2px;
-  background: transparent;
 }
 
 .reveal {
@@ -858,6 +871,7 @@ nav {
   object-fit: cover;
   display: block;
   filter: sepia(20%) saturate(0.8) contrast(1.1) brightness(0.95);
+  /* Subtle green tint to match the terminal theme */
   mix-blend-mode: normal;
 }
 
@@ -918,6 +932,71 @@ nav {
 @media (max-width: 900px) {
   .photo-window { width: 260px; }
 }
+/* ═══ ABOUT ME BLOCK ═══ */
+.about-me-block {
+  border: 1px solid var(--green-dim);
+  background: var(--bg2);
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.about-me-title {
+  background: rgba(0,143,17,0.15);
+  border-bottom: 1px solid var(--green-dim);
+  padding: 8px 16px;
+  font-family: var(--font-terminal);
+  font-size: 20px;
+  color: var(--green);
+  letter-spacing: 2px;
+}
+
+.about-me-body {
+  padding: 16px 20px;
+}
+
+.about-me-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 4px 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.about-me-key {
+  color: var(--green-dim);
+  min-width: 100px;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+
+.about-me-sep {
+  color: var(--green-dim);
+  opacity: 0.5;
+}
+
+.about-me-val {
+  color: var(--green);
+  letter-spacing: 0.5px;
+}
+
+.about-me-divider {
+  border-top: 1px solid rgba(0,143,17,0.2);
+  margin: 14px 0;
+}
+
+.about-me-para {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.85;
+  margin-bottom: 12px;
+  border-left: 2px solid var(--green-dim);
+  padding-left: 14px;
+  opacity: 0.9;
+}
+
+.about-me-para:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -952,16 +1031,17 @@ nav {
   </div>
 </div>
 
-<div id="portfolio">
-  <canvas id="portfolio-rain-canvas"></canvas>
+<canvas id="portfolio-rain-canvas"></canvas>
 
+<div id="portfolio">
   <nav>
     <a href="#hero" class="nav-brand">YK://ROOT</a>
     <div class="nav-links">
-      <a href="#skills" class="nav-link">[SKILLS]</a>
-      <a href="#projects" class="nav-link">[PROJECTS]</a>
-      <a href="#about" class="nav-link">[ABOUT]</a>
-      <a href="#contact" class="nav-link">[CONTACT]</a>
+    <a href="#about" class="nav-link">[ABOUT]</a>
+    <a href="#contact" class="nav-link">[CONTACT]</a>
+    <a href="#skills" class="nav-link">[SKILLS]</a>
+    <a href="#projects" class="nav-link">[PROJECTS]</a>
+      
     </div>
   </nav>
 
@@ -981,6 +1061,10 @@ nav {
       </div>
     </div>
     <div class="hero-right">
+      <!-- ═══════════════════════════════════════════════════════════
+           PHOTO WINDOW — replace the src below with your image path
+           Example: src="your-photo.jpg"  or  src="./assets/photo.png"
+           ═══════════════════════════════════════════════════════════ -->
       <div class="photo-window">
         <div class="photo-win-title">
           <span class="photo-win-dots">
@@ -989,11 +1073,13 @@ nav {
           WIN: OPERATOR//PROFILE_IMG
         </div>
         <div class="photo-win-body">
+          <!-- ▼▼▼ ADD YOUR PHOTO SRC HERE ▼▼▼ -->
           <img
             src="photo.png"
             alt="Yogendra Kumawat"
             class="profile-photo"
           />
+          <!-- ▲▲▲ REPLACE src WITH YOUR IMAGE PATH ▲▲▲ -->
           <div class="photo-scanline"></div>
         </div>
         <div class="photo-win-footer">
@@ -1006,6 +1092,32 @@ nav {
 
   <section id="about">
     <div class="section-title reveal">&gt; ABOUT_&amp;_EDUCATION.exe</div>
+
+    <div class="about-me-block reveal">
+      <div class="about-me-title">// WHO_AM_I.txt</div>
+      <div class="about-me-body">
+        <div class="about-me-line"><span class="about-me-key">NAME</span><span class="about-me-sep">::</span><span class="about-me-val">Yogendra Kumawat</span></div>
+        <div class="about-me-line"><span class="about-me-key">BASED_IN</span><span class="about-me-sep">::</span><span class="about-me-val">Kota, Rajasthan, India</span></div>
+        <div class="about-me-line"><span class="about-me-key">DEGREE</span><span class="about-me-sep">::</span><span class="about-me-val">B.Tech ECE — IIIT Kota (2027)</span></div>
+        <div class="about-me-line"><span class="about-me-key">FOCUS</span><span class="about-me-sep">::</span><span class="about-me-val">Embedded Firmware · Robotics · Computer Vision</span></div>
+        <div class="about-me-divider"></div>
+        <div class="about-me-para">
+          I build things that exist in the physical world — not just on a screen.<br>
+          Most of my projects start with a problem I find annoying and end with a hardware,
+          a servo, and firmware running on bare metal at 3am.
+        </div>
+        <div class="about-me-para">
+          I gravitate toward the hardware-software boundary — the part where a line of C
+          directly moves something in the real world. FreeRTOS task scheduling,
+          interrupt-driven I/O, inverse kinematics, SPI at max clock — that's where I'm most comfortable.
+        </div>
+        <div class="about-me-para">
+          Currently looking for an embedded/firmware internship where I can work on
+          real hardware, read datasheets for fun, and ship something that actually matters.
+        </div>
+      </div>
+    </div>
+
     <div class="about-grid">
       <div class="reveal">
         <div class="edu-timeline">
@@ -1048,7 +1160,7 @@ nav {
         </div>
         <div class="target-row">
           <span class="target-key">LOCATION</span>
-          <span class="target-val">Kota, Rajasthan, India</span>
+          <span class="target-val">India</span>
         </div>
       </div>
     </div>
@@ -1060,7 +1172,7 @@ nav {
       <div class="reveal">
         <div class="contact-heading">ESTABLISH_<br>CONNECTION.sh</div>
         <div class="contact-sub">
-          Seeking embedded/firmware internship for 2025.<br>
+          Seeking embedded/firmware internship for 2026.<br>
           If you're building real hardware, I want to be there.
         </div>
       </div>
@@ -1077,10 +1189,7 @@ nav {
           <span class="cmd-prefix">$ open</span>
           <span class="cmd-value">linkedin.com/in/yogendra-kumawat</span>
         </a>
-        <a class="cmd-link" href="tel:+917732906071">
-          <span class="cmd-prefix">$ call</span>
-          <span class="cmd-value">+91-77329-06071</span>
-        </a>
+
       </div>
     </div>
   </section>
@@ -1107,7 +1216,8 @@ nav {
           <span class="skill-tag">C++</span>
           <span class="skill-tag">Python</span>
           <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">Bash / Linux</span>
+          <span class="skill-tag">Shell Scripting</span>
+
         </div>
       </div>
       <div class="skill-block reveal">
@@ -1125,8 +1235,8 @@ nav {
         <div class="skill-block-content">
           <span class="skill-tag">Inverse Kinematics</span>
           <span class="skill-tag">Multithreading</span>
-          <span class="skill-tag">Async Python</span>
-          <span class="skill-tag">Bluetooth HC-05</span>
+
+
         </div>
       </div>
       <div class="skill-block reveal">
@@ -1155,7 +1265,7 @@ nav {
     <div class="section-title reveal">&gt; PROJECTS_LOG.exe</div>
     <div class="project-card reveal">
       <div class="project-header">
-        <span class="status-badge status-complete">[COMPLETE]</span>
+        <span class="status-badge status-complete">[COMPLETED]</span>
         <span class="project-file">// project_01.c</span>
       </div>
       <div class="project-body">
@@ -1175,7 +1285,7 @@ nav {
     </div>
     <div class="project-card reveal">
       <div class="project-header">
-        <span class="status-badge status-active">[ONGOING]</span>
+        <span class="status-badge status-ongoing">[ONGOING]</span>
         <span class="project-file">// project_02.c</span>
       </div>
       <div class="project-body">
@@ -1195,13 +1305,12 @@ nav {
     </div>
     <div class="project-card reveal">
       <div class="project-header">
-        <span class="status-badge status-complete">[ACTIVE]</span>
-        <span class="project-file">// project_03.c</span>
+        <span class="status-badge status-active">[ACTIVE]</span>
       </div>
       <div class="project-body">
         <div class="project-title">Fnction_Generator--v1.0</div>
         <div class="project-subtitle">Portable Battery Instrument</div>
-        <div class="project-desc">FreeRTOS firmware with 4 tasks: 12-bit dual-ADC acquisition, dynamic waveform output (PWM/Square/Noise/DC), 5-window SSD1306 OLED menu over I2C. Li-ion power board with true zero-drain power-off via regulator enable pin.</div>
+        <div class="project-desc">FreeRTOS firmware with 4 tasks: 12-bit dual-ADC acquisition, dynamic waveform output (PWM/Square/Noise/DC), 5-window SSD1306 OLED menu over I2C. Li-ion power board with true zero-drain power-off via regulator and switches.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32F103</span>
           <span class="skill-tag">FreeRTOS</span>
@@ -1215,13 +1324,13 @@ nav {
     </div>
     <div class="project-card reveal">
       <div class="project-header">
-        <span class="status-badge status-completed">[COMPLETED]</span>
+        <span class="status-badge status-complete">[COMPLETED]</span>
         <span class="project-file">// project_04.c</span>
       </div>
       <div class="project-body">
         <div class="project-title">Mouse-Gun</div>
         <div class="project-subtitle">Gyroscope FPS Controller / Air Mouse</div>
-        <div class="project-desc">STM32F103 + MPU6050 IMU reads gun-tilt over I2C and streams real-time mouse movement over Bluetooth HC-05 at 230,400 baud. Trigger fires a mouse click. Zero perceptible lag.</div>
+        <div class="project-desc">STM32F103 + MPU6050 IMU reads gun-tilt over I2C and streams real-time mouse movement over Bluetooth HC-05 at 230,400 baud. Trigger fires a mouse click.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32F103</span>
           <span class="skill-tag">MPU6050</span>
@@ -1235,7 +1344,7 @@ nav {
     </div>
     <div class="project-card reveal">
       <div class="project-header">
-        <span class="status-badge status-complete">[ACTIVE]</span>
+        <span class="status-badge status-active">[ACTIVE]</span>
         <span class="project-file">// project_05.c</span>
       </div>
       <div class="project-body">
@@ -1379,6 +1488,8 @@ function initChakra(containerId, rings, baseRadius) {
 }
 
 initChakra('boot-rings', 6, 15);
+// ─── Hero rings removed; photo window used instead ───
+// setTimeout(() => initChakra('hero-rings', 7, 25), 200);
 
 const bootLines = [
   { text: 'BIOS Date 06/08/26 — Ver 08.00.15', sys: false },
@@ -1458,7 +1569,7 @@ function initScrollReveal() {
 }
 
 // ═══════════════════════════════════════════
-// LOW BRIGHTNESS BACKGROUND RAIN LOGIC
+// BACKGROUND RAIN CANVAS
 // ═══════════════════════════════════════════
 (function() {
   const canvas = document.getElementById('portfolio-rain-canvas');
@@ -1470,49 +1581,41 @@ function initScrollReveal() {
     canvas.height = window.innerHeight;
   }
   resize();
-  window.addEventListener('resize', resize);
-
-  const fontSize = 14;
-  let columns = Math.floor(canvas.width / fontSize);
-  let drops = Array(columns).fill(1);
-
   window.addEventListener('resize', () => {
+    resize();
     columns = Math.floor(canvas.width / fontSize);
     drops = Array(columns).fill(1);
   });
 
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
+  let running = false;
+
   function drawRain() {
-    // Matches body background #020502 with low opacity to generate a trail effect
     ctx.fillStyle = 'rgba(2, 5, 2, 0.06)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Dinned color representation using 0.08 opacity to stay subtly in the background
     ctx.fillStyle = 'rgba(0, 255, 65, 0.2)';
     ctx.font = `${fontSize}px monospace`;
-
     for (let i = 0; i < drops.length; i++) {
       const text = ASCII_CHARS[Math.floor(Math.random() * ASCII_CHARS.length)];
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
       drops[i]++;
     }
     requestAnimationFrame(drawRain);
   }
 
-  // Hooking visibility logic up to your boot structure to prevent CPU overhead during initialization
+  // Start rain as soon as portfolio becomes visible
   const portfolio = document.getElementById('portfolio');
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.attributeName === 'class' && portfolio.classList.contains('visible')) {
-        drawRain();
-        observer.disconnect(); 
-      }
-    });
+  const rainObserver = new MutationObserver(() => {
+    if (portfolio.classList.contains('visible') && !running) {
+      running = true;
+      drawRain();
+      rainObserver.disconnect();
+    }
   });
-  observer.observe(portfolio, { attributes: true });
+  rainObserver.observe(portfolio, { attributes: true });
 })();
 </script>
 </body>
