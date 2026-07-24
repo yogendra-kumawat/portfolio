@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
 <title>YOGENDRA KUMAWAT // EMBEDDED SYSTEMS ENGINEER</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -871,11 +872,9 @@ nav {
   object-fit: cover;
   display: block;
   filter: sepia(20%) saturate(0.8) contrast(1.1) brightness(0.95);
-  /* Subtle green tint to match the terminal theme */
   mix-blend-mode: normal;
 }
 
-/* CRT scanline overlay on photo */
 .photo-scanline {
   position: absolute;
   inset: 0;
@@ -889,7 +888,6 @@ nav {
   pointer-events: none;
 }
 
-/* Green corner brackets */
 .photo-win-body::before,
 .photo-win-body::after {
   content: '';
@@ -1037,11 +1035,10 @@ nav {
   <nav>
     <a href="#hero" class="nav-brand">YK://ROOT</a>
     <div class="nav-links">
-    <a href="#about" class="nav-link">[ABOUT]</a>
-    <a href="#contact" class="nav-link">[CONTACT]</a>
-    <a href="#skills" class="nav-link">[SKILLS]</a>
-    <a href="#projects" class="nav-link">[PROJECTS]</a>
-      
+      <a href="#about" class="nav-link">[ABOUT]</a>
+      <a href="#contact" class="nav-link">[CONTACT]</a>
+      <a href="#skills" class="nav-link">[SKILLS]</a>
+      <a href="#projects" class="nav-link">[PROJECTS]</a>
     </div>
   </nav>
 
@@ -1061,10 +1058,6 @@ nav {
       </div>
     </div>
     <div class="hero-right">
-      <!-- ═══════════════════════════════════════════════════════════
-           PHOTO WINDOW — replace the src below with your image path
-           Example: src="your-photo.jpg"  or  src="./assets/photo.png"
-           ═══════════════════════════════════════════════════════════ -->
       <div class="photo-window">
         <div class="photo-win-title">
           <span class="photo-win-dots">
@@ -1073,13 +1066,11 @@ nav {
           WIN: OPERATOR//PROFILE_IMG
         </div>
         <div class="photo-win-body">
-          <!-- ▼▼▼ ADD YOUR PHOTO SRC HERE ▼▼▼ -->
           <img
             src="photo.png"
             alt="Yogendra Kumawat"
             class="profile-photo"
           />
-          <!-- ▲▲▲ REPLACE src WITH YOUR IMAGE PATH ▲▲▲ -->
           <div class="photo-scanline"></div>
         </div>
         <div class="photo-win-footer">
@@ -1097,27 +1088,20 @@ nav {
       <div class="about-me-title">// WHO_AM_I.txt</div>
       <div class="about-me-body">
         <div class="about-me-line"><span class="about-me-key">NAME</span><span class="about-me-sep">::</span><span class="about-me-val">Yogendra Kumawat</span></div>
-        <div class="about-me-line"><span class="about-me-key">BASED_IN</span><span class="about-me-sep">::</span><span class="about-me-val">Kota, Rajasthan, India</span></div>
+        <div class="about-me-line"><span class="about-me-key">BASED_IN</span><span class="about-me-sep">::</span><span class="about-me-val">Jaipur, Rajasthan, India</span></div>
         <div class="about-me-line"><span class="about-me-key">DEGREE</span><span class="about-me-sep">::</span><span class="about-me-val">B.Tech ECE — IIIT Kota (2027)</span></div>
-        <div class="about-me-line"><span class="about-me-key">FOCUS</span><span class="about-me-sep">::</span><span class="about-me-val">Embedded Firmware · Robotics · Computer Vision</span></div>
+        <div class="about-me-line"><span class="about-me-key">FOCUS</span><span class="about-me-sep">::</span><span class="about-me-val">Embedded Firmware · Computer Vision · PCB Design</span></div>
         <div class="about-me-divider"></div>
 
-<div class="about-me-para">
-  I am an Electronics and Communication Engineering student at IIIT Kota, working at the intersection of Embedded Systems, Robotics, and Computer Vision.
-  I build things that exist in the physical world-bridging the gap between optimized software and mechanical hardware.
-</div>
-<div class="about-me-para">
-  I gravitate toward the hardware-software boundary, where a line of C directly moves a motor or processes a sensor input. 
-  Whether it's configuring FreeRTOS task scheduling, handling interrupt-driven I/O or writing inverse kinematics.
-  I thrive on low-level optimization and bare-metal development.
-</div>
-<div class="about-me-para">
-  My goal is to build low-cost, highly efficient intelligent systems that solve real-world problems with minimal hardware.
-  Currently, I am looking for a firmware or robotics internship where I can dive into datasheets, write tight code, and help ship hardware that matters.
-</div>
-
-        
-        
+        <div class="about-me-para">
+          ECE student at IIIT Kota building at the hardware-software boundary — STM32 firmware, KiCad PCBs, and Python CV pipelines. Interested in systems where a line of C directly moves hardware or processes sensor data.
+        </div>
+        <div class="about-me-para">
+          Currently developing a vibrotactile wearable that runs YOLOv8 + Depth Anything V2 and streams structured tactile data to STM32 over UART. Also working on a FreeRTOS-based function generator with a custom fabricated PCB and a multi-module flight controller board.
+        </div>
+        <div class="about-me-para">
+          Goal: build low-cost, efficient embedded systems that solve real problems with minimal hardware. Currently available for embedded / embedded AI internships.
+        </div>
       </div>
     </div>
 
@@ -1126,7 +1110,7 @@ nav {
         <div class="edu-timeline">
           <div class="edu-line"></div>
           <div class="edu-item">
-            <div class="edu-year">2022</div>
+            <div class="edu-year">2021</div>
             <div class="edu-name">KCP School</div>
             <div class="edu-detail">RBSE · 91.40%</div>
           </div>
@@ -1139,7 +1123,7 @@ nav {
           <div class="edu-item">
             <div class="edu-year">ONGOING</div>
             <div class="edu-name">Independent Projects</div>
-            <div class="edu-detail">8+ Hardware Builds · Self-directed R&D</div>
+            <div class="edu-detail">8+ Hardware Builds · Self-directed R&amp;D</div>
           </div>
         </div>
       </div>
@@ -1147,15 +1131,15 @@ nav {
         <div class="target-title">// TARGETING_PARAMS.conf</div>
         <div class="target-row">
           <span class="target-key">ROLE</span>
-          <span class="target-val">Embedded / Firmware Intern</span>
+          <span class="target-val">Embedded Systems / AI Intern</span>
         </div>
         <div class="target-row">
           <span class="target-key">DOMAIN</span>
-          <span class="target-val">Embedded Systems · Robotics · CV</span>
+          <span class="target-val">Embedded Systems · Computer Vision · PCB Design</span>
         </div>
         <div class="target-row">
           <span class="target-key">INDUSTRIES</span>
-          <span class="target-val">Semiconductors · Automotive · Aerospace & Defense · Consumer Electronics</span>
+          <span class="target-val">Semiconductors · Automotive · Aerospace &amp; Defense · Consumer Electronics</span>
         </div>
         <div class="target-row">
           <span class="target-key">STATUS</span>
@@ -1163,7 +1147,7 @@ nav {
         </div>
         <div class="target-row">
           <span class="target-key">LOCATION</span>
-          <span class="target-val">India</span>
+          <span class="target-val">Jaipur, India</span>
         </div>
       </div>
     </div>
@@ -1175,7 +1159,7 @@ nav {
       <div class="reveal">
         <div class="contact-heading">ESTABLISH_<br>CONNECTION.sh</div>
         <div class="contact-sub">
-          Seeking embedded/firmware internship for 2026.<br>
+          Currently available for embedded / embedded AI internships.<br>
           If you're building real hardware, I want to be there.
         </div>
       </div>
@@ -1192,7 +1176,6 @@ nav {
           <span class="cmd-prefix">$ open</span>
           <span class="cmd-value">linkedin.com/in/yogendra-kumawat</span>
         </a>
-
       </div>
     </div>
   </section>
@@ -1218,9 +1201,7 @@ nav {
           <span class="skill-tag">C</span>
           <span class="skill-tag">C++</span>
           <span class="skill-tag">Python</span>
-          <span class="skill-tag">MATLAB</span>
-          <span class="skill-tag">Shell Scripting</span>
-
+          <span class="skill-tag">Shell (Bash)</span>
         </div>
       </div>
       <div class="skill-block reveal">
@@ -1228,27 +1209,28 @@ nav {
         <div class="skill-block-content">
           <span class="skill-tag">OpenCV</span>
           <span class="skill-tag">YOLOv8</span>
-          <span class="skill-tag">MediaPipe</span>
           <span class="skill-tag">Depth Anything V2</span>
+          <span class="skill-tag">Monocular depth estimation</span>
+          <span class="skill-tag">IIR temporal smoothing</span>
           <span class="skill-tag">NumPy</span>
         </div>
       </div>
       <div class="skill-block reveal">
-        <div class="skill-block-title">[ROBOTICS]</div>
+        <div class="skill-block-title">[HARDWARE_&amp;_PCB]</div>
         <div class="skill-block-content">
-          <span class="skill-tag">Inverse Kinematics</span>
-          <span class="skill-tag">Multithreading</span>
-
-
+          <span class="skill-tag">PCB Design (KiCad)</span>
+          <span class="skill-tag">PCB Fabrication</span>
+          <span class="skill-tag">Schematic reading</span>
+          <span class="skill-tag">ST-Link debugging</span>
+          <span class="skill-tag">Oscilloscope</span>
         </div>
       </div>
       <div class="skill-block reveal">
         <div class="skill-block-title">[TOOLS]</div>
         <div class="skill-block-content">
           <span class="skill-tag">STM32CubeIDE</span>
-          <span class="skill-tag">Autodesk Fusion 360</span>
-          <span class="skill-tag">NI Multisim</span>
           <span class="skill-tag">Git / GitHub</span>
+          <span class="skill-tag">Linux (Ubuntu)</span>
           <span class="skill-tag">Jupyter</span>
         </div>
       </div>
@@ -1256,8 +1238,8 @@ nav {
         <div class="skill-block-title">[LIBRARIES]</div>
         <div class="skill-block-content">
           <span class="skill-tag">PySerial</span>
-          <span class="skill-tag">PyAutoGUI</span>
-          <span class="skill-tag">Pygame</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">Ultralytics</span>
           <span class="skill-tag">Matplotlib</span>
         </div>
       </div>
@@ -1266,74 +1248,104 @@ nav {
 
   <section id="projects">
     <div class="section-title reveal">&gt; PROJECTS_LOG.exe</div>
-    <div class="project-card reveal">
-      <div class="project-header">
-        <span class="status-badge status-complete">[COMPLETED]</span>
-        <span class="project-file">// project_01.c</span>
-      </div>
-      <div class="project-body">
-        <div class="project-title">Writing-Machine</div>
-        <div class="project-subtitle">Polar Coordinate Robotic Arm Plotter</div>
-        <div class="project-desc">2-link polar robotic arm (STM32F103, 3 servos) using inverse kinematics (Law of Cosines) to autonomously draw any image. Python/OpenCV pipeline extracts contours and streams 10-byte ASCII packets at 115,200 baud over UART. Interrupt-driven firmware handles PWM servo control. Built for under ₹400.</div>
-        <div class="stack-tags">
-          <span class="skill-tag">STM32F103</span>
-          <span class="skill-tag">FreeRTOS</span>
-          <span class="skill-tag">OpenCV</span>
-          <span class="skill-tag">UART</span>
-          <span class="skill-tag">Inverse Kinematics</span>
-          <span class="skill-tag">PySerial</span>
-        </div>
-        <a href="https://github.com/yogendra-kumawat/Writing-machine" target="_blank" class="project-link">[> OPEN_REPO]</a>
-      </div>
-    </div>
+
+    <!-- PROJECT 01: Tactile Vision — ONGOING (not yet functional) -->
     <div class="project-card reveal">
       <div class="project-header">
         <span class="status-badge status-ongoing">[ONGOING]</span>
-        <span class="project-file">// project_02.c</span>
+        <span class="project-file">// project_01.c</span>
       </div>
       <div class="project-body">
-        <div class="project-title">3D-World // Tactile Vision</div>
+        <div class="project-title">Tactile Vision // 3D-World</div>
         <div class="project-subtitle">AI-Powered Wearable for the Visually Impaired</div>
-        <div class="project-desc">Wearable converting live camera into a 16×8 vibrotactile pin-matrix. Depth Anything V2 + YOLOv8 with TTS audio. Async threading decouples AI inference from the STM32 serial driver to prevent blocking.</div>
+        <div class="project-desc">Wearable converting live camera feed into a 4x5 (target: 16x8) vibrotactile pin-matrix, enabling visually impaired users to perceive surroundings through touch. Depth Anything V2 monocular depth estimation + YOLOv8 object detection; structured bytearray protocol streams pin height data to STM32 over UART with IIR temporal smoothing to suppress inter-frame jitter.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32</span>
           <span class="skill-tag">YOLOv8</span>
           <span class="skill-tag">Depth Anything V2</span>
-          <span class="skill-tag">Async Python</span>
-          <span class="skill-tag">TTS</span>
-          <span class="skill-tag">IRLS</span>
+          <span class="skill-tag">PySerial</span>
+          <span class="skill-tag">UART</span>
+          <span class="skill-tag">IIR Filter</span>
         </div>
         <a href="https://github.com/yogendra-kumawat/3d-world" target="_blank" class="project-link">[> OPEN_REPO]</a>
       </div>
     </div>
+
+    <!-- PROJECT 02: Writing Machine — COMPLETED -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <span class="status-badge status-complete">[COMPLETED]</span>
+        <span class="project-file">// project_02.c</span>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Writing-Machine</div>
+        <div class="project-subtitle">Polar Coordinate Robotic Arm Plotter</div>
+        <div class="project-desc">2-link polar robotic arm (STM32F103, 3 servos) using inverse kinematics (Law of Cosines) to autonomously draw any image. Python/OpenCV pipeline extracts contours and streams 10-byte ASCII packets at 115,200 baud over UART. Interrupt-driven firmware handles PWM servo control. Full BOM under Rs. 400.</div>
+        <div class="stack-tags">
+          <span class="skill-tag">STM32F103</span>
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">UART</span>
+          <span class="skill-tag">Inverse Kinematics</span>
+          <span class="skill-tag">PySerial</span>
+          <span class="skill-tag">PWM</span>
+        </div>
+        <a href="https://github.com/yogendra-kumawat/Writing-machine" target="_blank" class="project-link">[> OPEN_REPO]</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 03: Function Generator — ACTIVE (works) -->
     <div class="project-card reveal">
       <div class="project-header">
         <span class="status-badge status-active">[ACTIVE]</span>
+        <span class="project-file">// project_03.c</span>
       </div>
       <div class="project-body">
-        <div class="project-title">Fnction_Generator--v1.0</div>
-        <div class="project-subtitle">Portable Battery Instrument</div>
-        <div class="project-desc">FreeRTOS firmware with 4 tasks: 12-bit dual-ADC acquisition, dynamic waveform output (PWM/Square/Noise/DC), 5-window SSD1306 OLED menu over I2C.</div>
+        <div class="project-title">Function Generator v1.0</div>
+        <div class="project-subtitle">Portable Battery Instrument — Custom PCB</div>
+        <div class="project-desc">FreeRTOS firmware with 4 concurrent tasks: 12-bit dual-ADC acquisition, dynamic waveform output (PWM/Square/Noise/DC), 5-window SSD1306 OLED menu over I2C, and PWM-input capture measurement. Custom single-sided PCB fabricated via toner-transfer and FeCl3 etch in KiCad with onboard 5V/3.3V regulation and Li-ion charging circuit.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32F103</span>
           <span class="skill-tag">FreeRTOS</span>
           <span class="skill-tag">I2C</span>
           <span class="skill-tag">12-bit ADC</span>
           <span class="skill-tag">SSD1306</span>
-          <span class="skill-tag">Li-ion</span>
+          <span class="skill-tag">KiCad PCB</span>
         </div>
         <a href="https://github.com/yogendra-kumawat/Fnction_generator--v1.0" target="_blank" class="project-link">[> OPEN_REPO]</a>
       </div>
     </div>
+
+    <!-- PROJECT 04: Flight Controller — ONGOING (hardware validated, firmware pending) -->
+    <div class="project-card reveal">
+      <div class="project-header">
+        <span class="status-badge status-ongoing">[ONGOING]</span>
+        <span class="project-file">// project_04.c</span>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Flight Controller PCB</div>
+        <div class="project-subtitle">Multi-Module Custom PCB — Hardware Validated</div>
+        <div class="project-desc">Multi-module flight controller PCB designed and fabricated in KiCad — STM32F/MPU6050 pin sockets, AI Thinker LoRa (SPI), AMS1117 5V/3.3V regulation, 8 servo/BLDC timer headers, ESC headers (9V direct), dual I2C, and power rails. Hardware validated — firmware in development.</div>
+        <div class="stack-tags">
+          <span class="skill-tag">KiCad</span>
+          <span class="skill-tag">STM32F</span>
+          <span class="skill-tag">LoRa SPI</span>
+          <span class="skill-tag">MPU6050</span>
+          <span class="skill-tag">AMS1117</span>
+          <span class="skill-tag">ESC headers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 05: Mouse Gun — COMPLETED -->
     <div class="project-card reveal">
       <div class="project-header">
         <span class="status-badge status-complete">[COMPLETED]</span>
-        <span class="project-file">// project_04.c</span>
+        <span class="project-file">// project_05.c</span>
       </div>
       <div class="project-body">
         <div class="project-title">Mouse-Gun</div>
         <div class="project-subtitle">Gyroscope FPS Controller / Air Mouse</div>
-        <div class="project-desc">STM32F103 + MPU6050 IMU reads gun-tilt over I2C and streams real-time mouse movement over Bluetooth HC-05 at 230,400 baud. Trigger fires a mouse click.</div>
+        <div class="project-desc">STM32F103 + MPU6050 IMU reads gun-tilt over I2C and streams real-time mouse movement over Bluetooth HC-05 at 230,400 baud. 200-sample averaging maps gyro tilt to cursor movement. Trigger fires a mouse click.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32F103</span>
           <span class="skill-tag">MPU6050</span>
@@ -1345,15 +1357,17 @@ nav {
         <a href="https://github.com/yogendra-kumawat/mouse-gun" target="_blank" class="project-link">[> OPEN_REPO]</a>
       </div>
     </div>
+
+    <!-- PROJECT 06: Rotating Display — ACTIVE -->
     <div class="project-card reveal">
       <div class="project-header">
         <span class="status-badge status-active">[ACTIVE]</span>
-        <span class="project-file">// project_05.c</span>
+        <span class="project-file">// project_06.c</span>
       </div>
       <div class="project-body">
         <div class="project-title">Rotating-Display</div>
-        <div class="project-subtitle">Spinning RGB LED Video Arm</div>
-        <div class="project-desc">Spinning 16-LED RGB arm streams live webcam video onto a 360° polar grid via 4-byte binary SPI protocol on STM32F103. True persistence-of-vision at speed.</div>
+        <div class="project-subtitle">Spinning RGB LED POV Display</div>
+        <div class="project-desc">Spinning 16-LED RGB arm streams live webcam video onto a 360° polar grid via 4-byte binary SPI protocol on STM32F103. True persistence-of-vision at rotational speed.</div>
         <div class="stack-tags">
           <span class="skill-tag">STM32F103</span>
           <span class="skill-tag">SPI</span>
@@ -1361,13 +1375,14 @@ nav {
           <span class="skill-tag">16×RGB</span>
           <span class="skill-tag">POV</span>
         </div>
-        <a href="https://github.com/yogendra-kumawat/rotating-display" target="_blank" class="project-link">[> OPEN_REPO]</a>
+        <a href="https://github.com/yogendra-kumawat/rotating-diplay" target="_blank" class="project-link">[> OPEN_REPO]</a>
       </div>
     </div>
+
     <div class="mini-projects">
       <div class="mini-card reveal">
         <div class="mini-title">EM Wave Simulator</div>
-        <div class="mini-desc">MATLAB 3D E/B field animation with polarisation classification</div>
+        <div class="mini-desc">MATLAB 3D E/B field animation with Linear/Circular/Elliptical polarisation classification</div>
         <a href="https://github.com/yogendra-kumawat/EM_WAVE-simulator" target="_blank" class="project-link" style="font-size:13px;">[> OPEN_REPO]</a>
       </div>
       <div class="mini-card reveal">
@@ -1439,9 +1454,6 @@ setInterval(() => { const el = document.getElementById('nettraffic-content'); if
   draw();
 })();
 
-// ═══════════════════════════════════════════
-// CHAKRA RING LOGIC
-// ═══════════════════════════════════════════
 function initChakra(containerId, rings, baseRadius) {
   const chakraContainer = document.getElementById(containerId);
   if(!chakraContainer) return;
@@ -1449,7 +1461,7 @@ function initChakra(containerId, rings, baseRadius) {
 
   for(let i=1; i<=rings; i++) {
     const ring = document.createElement('div');
-    ring.className = 'ring'; 
+    ring.className = 'ring';
     const radius = i * baseRadius;
     ring.style.width = `${radius * 2}px`;
     ring.style.height = `${radius * 2}px`;
@@ -1458,11 +1470,11 @@ function initChakra(containerId, rings, baseRadius) {
     ring.style.position = 'absolute';
     ring.style.top = '50%';
     ring.style.left = '50%';
-  
+
     let ringText = "";
-    const charsNeeded = Math.floor((radius * 2 * Math.PI) / 10); 
+    const charsNeeded = Math.floor((radius * 2 * Math.PI) / 10);
     for(let j=0; j<charsNeeded; j++) ringText += chars[Math.floor(Math.random() * chars.length)];
-  
+
     for(let j=0; j<ringText.length; j++) {
       const span = document.createElement('span');
       span.textContent = ringText[j];
@@ -1475,8 +1487,8 @@ function initChakra(containerId, rings, baseRadius) {
       ring.appendChild(span);
     }
 
-    const dir = i % 2 === 0 ? 1 : -1; 
-  
+    const dir = i % 2 === 0 ? 1 : -1;
+
     ring.animate([
       { transform: `rotateZ(0deg) rotateX(60deg)` },
       { transform: `rotateZ(${360 * dir}deg) rotateX(60deg)` }
@@ -1491,8 +1503,6 @@ function initChakra(containerId, rings, baseRadius) {
 }
 
 initChakra('boot-rings', 6, 15);
-// ─── Hero rings removed; photo window used instead ───
-// setTimeout(() => initChakra('hero-rings', 7, 25), 200);
 
 const bootLines = [
   { text: 'BIOS Date 06/08/26 — Ver 08.00.15', sys: false },
@@ -1554,7 +1564,7 @@ async function runBoot() {
 runBoot();
 
 function startHeroTyping() {
-  const text = "Embedded Systems Engineer · Robotics · Computer Vision";
+  const text = "Embedded Systems · Computer Vision · PCB Design";
   const el = document.getElementById('typed-text');
   let i = 0;
   function type() {
@@ -1571,9 +1581,6 @@ function initScrollReveal() {
   elements.forEach(el => observer.observe(el));
 }
 
-// ═══════════════════════════════════════════
-// BACKGROUND RAIN CANVAS
-// ═══════════════════════════════════════════
 (function() {
   const canvas = document.getElementById('portfolio-rain-canvas');
   if (!canvas) return;
@@ -1609,7 +1616,6 @@ function initScrollReveal() {
     requestAnimationFrame(drawRain);
   }
 
-  // Start rain as soon as portfolio becomes visible
   const portfolio = document.getElementById('portfolio');
   const rainObserver = new MutationObserver(() => {
     if (portfolio.classList.contains('visible') && !running) {
